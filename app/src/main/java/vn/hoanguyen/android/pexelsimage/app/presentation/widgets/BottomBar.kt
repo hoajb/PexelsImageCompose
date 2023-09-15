@@ -30,7 +30,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 
 data class BottomBarItem(val title: String, val icon: ImageVector)
 
-private val items: List<BottomBarItem> = listOf(
+val bottomBarItems: List<BottomBarItem> = listOf(
     BottomBarItem(
         title = "Home", icon = Icons.Filled.Home
     ),
@@ -53,7 +53,7 @@ fun BottomBar(
 ) {
     BottomAppBar(
         actions = {
-            items.forEachIndexed { index, item ->
+            bottomBarItems.forEachIndexed { index, item ->
                 val isSelected = selectedPos == index
                 val scale by animateFloatAsState(
                     if (isSelected) 1.5f else 1f,
