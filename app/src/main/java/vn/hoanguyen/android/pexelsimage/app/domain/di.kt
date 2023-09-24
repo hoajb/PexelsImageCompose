@@ -6,5 +6,5 @@ import vn.hoanguyen.android.pexelsimage.app.data.PexelsRepositoryImpl
 
 val domainModule: Module = module {
     single { UseCaseFetchPexelsPhotosWithQuery(get()) }
-    single<PexelsRepository> { PexelsRepositoryImpl(get()) }
+    single { UseCaseFetchPexelsPhotosWithQueryPaging(get()) }
 }

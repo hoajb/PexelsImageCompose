@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import vn.hoanguyen.android.pexelsimage.app.core.ResultCall
+import vn.hoanguyen.android.pexelsimage.app.core.constants.ImagesListConstant.PER_PAGE
 import vn.hoanguyen.android.pexelsimage.app.core.presentation.UIState
 import vn.hoanguyen.android.pexelsimage.app.domain.PexelsPhoto
 import vn.hoanguyen.android.pexelsimage.app.domain.UseCaseFetchPexelsPhotosWithQuery
@@ -13,6 +14,7 @@ import vn.hoanguyen.android.pexelsimage.app.domain.UseCaseFetchPexelsPhotosWithQ
 class ViewModelImagesList(
     private val useCaseFetchPexelsPhotosWithQuery: UseCaseFetchPexelsPhotosWithQuery
 ) : ViewModel() {
+    val itemsPerPage: Int = PER_PAGE
     private val photosState = mutableStateOf<UIState<List<PexelsPhoto>>>(UIState.Loading)
     val photos: State<UIState<List<PexelsPhoto>>> = photosState
 

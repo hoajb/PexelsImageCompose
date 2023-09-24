@@ -99,4 +99,9 @@ dependencies {
     implementation "io.github.aakira:napier:$napierVersion"
 
     implementation("io.coil-kt:coil-compose:$coil_version")
+
+    //Jetpack Paging 3
+    def paging_version = "3.2.1"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation "androidx.paging:paging-compose:$paging_version"
 }

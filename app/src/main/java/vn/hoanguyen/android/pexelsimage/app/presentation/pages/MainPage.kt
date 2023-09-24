@@ -25,10 +25,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import vn.hoanguyen.android.pexelsimage.app.R
 import vn.hoanguyen.android.pexelsimage.app.presentation.widgets.BottomBar
 import vn.hoanguyen.android.pexelsimage.app.presentation.widgets.PexelsPhotoList
+import vn.hoanguyen.android.pexelsimage.app.presentation.widgets.PexelsPhotoListPaging
 import vn.hoanguyen.android.pexelsimage.app.presentation.widgets.bottomBarItems
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -49,7 +52,7 @@ fun MainPage() {
             topBar = {
                 TopAppBar(
                     title = {
-                        Text("Top app bar")
+                        Text(stringResource(id = R.string.app_name))
                     }
                 )
             },
@@ -88,7 +91,8 @@ fun MainPage() {
                 ) { page ->
                     when (page) {
                         0 -> {
-                            PexelsPhotoList()
+//                            PexelsPhotoList()
+                            PexelsPhotoListPaging()
                         }
 
                         1 -> {

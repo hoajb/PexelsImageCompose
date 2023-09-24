@@ -24,6 +24,8 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import vn.hoanguyen.android.pexelsimage.app.BuildConfig
 import vn.hoanguyen.android.pexelsimage.app.core.error.FormattedNetworkClientException
+import vn.hoanguyen.android.pexelsimage.app.domain.PexelsRepository
+import vn.hoanguyen.android.pexelsimage.app.domain.PhotosPagingRepository
 
 val networkModule: Module = module {
     single(named("baseURL")) { "https://api.pexels.com/v1" }
@@ -65,4 +67,7 @@ val networkModule: Module = module {
             }
         }.also { Napier.base(DebugAntilog()) }
     }
+
+    single<PexelsRepository> { PexelsRepositoryImpl(get()) }
+    single<PhotosPagingRepository> { PhotosPagingRepositoryImpl(get()) }
 }
