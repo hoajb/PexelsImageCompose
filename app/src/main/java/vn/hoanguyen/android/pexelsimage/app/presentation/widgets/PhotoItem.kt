@@ -1,9 +1,15 @@
 package vn.hoanguyen.android.pexelsimage.app.presentation.widgets
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -63,17 +70,44 @@ fun PhotoItem(photo: PexelsPhoto) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        AsyncImage(
-            modifier = Modifier.fillMaxWidth(),
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(photo.src.large2x)
-                .crossfade(true)
-                .build(),
-//            placeholder = painterResource(R.drawable.placeholder),
-            contentDescription = stringResource(R.string.description),
-            contentScale = ContentScale.FillWidth,
+        ImageLoader(
+            photoUrl = photo.src.large2x,
+            ratio = photo.width.toFloat() / photo.height
         )
 
         Spacer(modifier = Modifier.height(16.dp))
+    }
+}
+
+@Composable
+fun ImageLoader(
+    photoUrl: String,
+    ratio: Float,
+) {
+    BoxWithConstraints(
+        modifier = Modifier
+            .fillMaxWidth()
+            .aspectRatio(ratio)
+    ) {
+        if (constraints.maxWidth > 0) {
+            // This is your AsyncImage component
+            AsyncImage(
+                modifier = Modifier.fillMaxSize(),
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(photoUrl)
+                    .crossfade(true)
+                    .build(),
+                contentDescription = stringResource(R.string.description),
+            )
+        } else {
+            // Placeholder with gray background
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Gray)
+            ) {
+                // You can add a loading indicator or any other content here
+            }
+        }
     }
 }

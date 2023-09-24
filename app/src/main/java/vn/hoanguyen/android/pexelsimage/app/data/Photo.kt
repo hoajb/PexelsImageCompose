@@ -7,6 +7,8 @@ import vn.hoanguyen.android.pexelsimage.app.domain.PexelsPhotoSrc
 @Serializable
 data class PexelsPhotoDto(
     val id: Long,
+    val width: Int,
+    val height: Int,
     val photographer: String,
     val src: PexelsPhotoSrcDto
 )
@@ -26,6 +28,8 @@ data class PexelsPhotoSrcDto(
 //Mapping
 fun PexelsPhotoDto.toEntity() = PexelsPhoto(
     id = this.id,
+    width = this.width,
+    height = this.height,
     photographer = this.photographer,
     src = this.src.toEntity(),
 )

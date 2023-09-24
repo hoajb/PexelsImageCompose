@@ -2,6 +2,8 @@ package vn.hoanguyen.android.pexelsimage.app.domain
 
 data class PexelsPhoto(
     val id: Long,
+    val width: Int,
+    val height: Int,
     val photographer: String,
     val src: PexelsPhotoSrc
 )
