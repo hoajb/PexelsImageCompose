@@ -33,20 +33,7 @@ fun PexelsPhotoListPaging(
         when (val state = photos.loadState.refresh) {
             is LoadState.Error -> {
                 item {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        val error = state.error
-                        Text(
-                            text = "Error: $error",
-                            color = Color.Red,
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(16.dp)
-                        )
-                    }
+                    ErrorText(errorMessage = state.error.message)
                 }
             }
 
@@ -83,20 +70,7 @@ fun PexelsPhotoListPaging(
         when (val state = photos.loadState.append) { // Pagination
             is LoadState.Error -> {
                 item {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        val error = state.error
-                        Text(
-                            text = "Error load more: $error",
-                            color = Color.Red,
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(16.dp)
-                        )
-                    }
+                    ErrorText(errorMessage = state.error.message)
                 }
             }
 
