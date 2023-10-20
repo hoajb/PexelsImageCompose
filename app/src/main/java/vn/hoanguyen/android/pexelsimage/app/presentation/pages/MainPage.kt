@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -30,8 +29,6 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import vn.hoanguyen.android.pexelsimage.app.R
 import vn.hoanguyen.android.pexelsimage.app.presentation.widgets.BottomBar
-import vn.hoanguyen.android.pexelsimage.app.presentation.widgets.PexelsPhotoList
-import vn.hoanguyen.android.pexelsimage.app.presentation.widgets.PexelsPhotoListPaging
 import vn.hoanguyen.android.pexelsimage.app.presentation.widgets.bottomBarItems
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -91,12 +88,14 @@ fun MainPage() {
                 ) { page ->
                     when (page) {
                         0 -> {
-//                            PexelsPhotoList()
-                            PexelsPhotoListPaging()
+//                            HomePage()
+                            SearchPage()
                         }
 
                         1 -> {
-                            PlaceHolderPage(text = "Search")
+//                            SearchPage()
+//                            HomePage()
+                            PlaceHolderPage(text = "SearchPage")
                         }
 
                         2 -> {
